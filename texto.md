@@ -25,7 +25,7 @@ com o comando `cd` que significa _change directory_ , traduzindo
 mudar de pasta.
 
 ```powerShell
-    cd E:\underdev
+cd E:\underdev
 ```
 
 Após, vou clonar o repositório na minha maquina local, para isto eu uso o comando
@@ -38,5 +38,42 @@ para fazer o download de outros repositórios, é só adicionar o _clone link_ a
 
 ![](/print/repo-clone.JPG)
 
-então eu abro nosso projeto e vou fazer a primeira alteração
-eu abro o meu editor de código, no meu caso [Visual Studio Code]()
+então para fazer a primeira alteração
+eu abro o meu editor de código, no meu caso [Visual Studio Code](https://code.visualstudio.com/) e crio o arquivo _index.js_ e escrevo uma simples linha de código nele.
+
+#### obs: a seta branca indica onde voce pode criar um novo arquivo no _studio code_
+
+![](/print/new-arq.JPG)
+
+Com o arquivo criado e modificado. Voltamos para o prompt de comando e alteramos o diretório de navegação para dentro do repositório com o comando ` cd \underDev\Github-Erros-Comuns` , após isso vamos pedir um _status_ de como anda o projeto.
+
+```powerShell
+git status
+```
+
+![](print/git-status.JPG)
+
+Como podemos observar, o prompt nos responde que existe um _Untracked file_, um arquivo que o git ainda não está no histórico de alterções do git, para adiciona-lo eu farei o comando `add` e pedirei um `status` para o _git_ para assim fazer nosso primeiro commit.
+
+```powerShell
+git add index.js
+git status
+```
+
+agora vou salvar as alterações no histórico de alterações do _gitHub_ , vou fazer o commit.
+
+```powerShell
+git commit -m "adicionado o arquivi index.js ao repositório no guto"
+```
+
+É sempre muito importante por menssagens que resumam o que você esta atualizando em cada _commit_ que você faz, assim no caso de algum _bug_ por exemplo. Você pode saber oq cada _commit_ agrega para o projeto como um todo, ficand mais facíl de localizar falhas e também fazer atualizações.
+
+Vejam que cometi alguns erros ao fazer este commit, troquei "arquivo" por "arquiivi" assim como "GitHub" por "guto", para corregir isto, usarei o comando ` --amend` para poder reescrever a mensagem.
+
+```powerShell
+git commit --amend -m "adicionando o arquivo index.js ao repositório no GitHub"
+```
+
+![](/print/git-ct.JPG)
+
+Pronto! agora nosso commit está certin 🤩
