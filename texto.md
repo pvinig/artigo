@@ -244,3 +244,13 @@ git push
 ![](print/push11.jpg)
 
 Com isto agora, todos que acessarem o nosso reposirio, vai ter acesso ao conteúdo do projeto...😬
+
+## E isto é tudo pessoal...
+
+![](https://media1.giphy.com/media/9D7Jr7o9TjKta/giphy.gif?cid=ecf05e47r67jexfqgqr0tnuf1ucw8i6jkpoxl0psmlck2c4c&rid=giphy.gif&ct=g)
+
+Este é meu primeiro artigo e espero ter ajudado a qualquer um que esteja lendo!
+
+referencia:
+
+# por referencias
