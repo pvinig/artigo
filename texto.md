@@ -71,9 +71,176 @@ git commit -m "adicionado o arquivi index.js ao repositório no guto"
 Vejam que cometi alguns erros ao fazer este commit, troquei "arquivo" por "arquiivi" assim como "GitHub" por "guto", para corregir isto, usarei o comando ` --amend` para poder reescrever a mensagem.
 
 ```powerShell
-git commit --amend -m "adicionando o arquivo index.js ao repositório no GitHub"
+git commit --amend -m "adicionando o arquivo index.js ao repositório no Git"
 ```
 
 ![](/print/git-ct.JPG)
 
-Pronto! agora nosso commit está certin 🤩
+Pronto! agora nosso commit foi concluido, mas note que ainda não 'enviamos nossas alterações' para o branch main no GitHub, nós ainda não fizemos o ` push`.
+
+<img src="https://media4.giphy.com/media/3ohuPDuPHDuGnVtp5u/giphy.gif?cid=790b76111a8cebce9e1531a68b2a40c9175befd8f2d33a39&rid=giphy.gif&ct=g" width="350">
+
+## Mas digamos que antes de fazer o push, nós precisamos fazer mais algumas alterações no código...
+
+Então vamos criar mais um arquivo e modificar outro. eu...
+
+- Criei o arquivo _app.js_
+- importei o arquivo _app.js_ para o arquivo _index.js_, ou seja eu também alterei o arquivo _index.js_
+
+Agora nós vamos pedir ao git um pequeno relatório de como está o fluxo de nosso projeto, vamos fazer um `git log` e um `git status`.
+
+##### É sempre bom saber por onde andas e aonde queres chegar; alguem...
+
+```git
+git log
+git status
+```
+
+![](print/log-status-1.jpg)
+
+### O que o _git_ está nos dizendo aqui?
+
+- [git log](https://git-scm.com/docs/git-log) : Em determinado ponto da mensagem que o _git_ nos responde (Leia!), esta escrito _"Your branch is ahead of 'origin/main' by 1 commit."_ . Ou seja, que as alterações que fiz no meu commit, ainda não estão na _branch_ main do projeto
+- [git status](https://git-scm.com/docs/git-status) : observamos que temos altercações _not staged for commit_ e também _untraked files_ e que não hà nada para _commitar_ ainda.
+
+Então agora eu vou adicionar estas alterações ao meu _commit_, para então, por estas alterações na branch 'main' do projeto, fazer o ` push`.
+para isto eu primeiro...
+
+### Adiciono as novas alterações ao _commit_ (sim, todas de uma vez):
+
+```git
+git add -A
+```
+
+##### OBS: o comando `-A` significa "all", ou seja todos os novos arquivo e novas alterações vão estar prontas para serem commitados.
+
+Agora vamos adicionar estas novas alterações a aquele _commit_ que nós já haviamos feito:
+Para isto vamos novamente usar o comando `--amend`.
+
+```git
+git commit --amend -m "adicionando os arquivos index.js e app.js ao git"
+```
+
+com isto todas as alterações que fizemos até agora estão todas no mesmo commit
+![](/print/commit2.jpg)
+
+## Continuando nossa aventura no git senhoras e senhores: [git restore](https://git-scm.com/docs/git-restore)
+
+Contruindo nosso projeto, nos vamos criar o arquivo _lib.js_ que representa uma biblioteca nova ultilizada no projeto.
+![](print/libJs.jpg)
+
+Eu logo já adiciono o novo arquivo la no _git_ e também peço um `status`.
+
+```git
+git add lib.js
+git status
+```
+
+![](print/addLib.jpg)
+
+##### eu uso _prettier_ no meu VsCode então modificou o arquivo _app.js_ tb mas foi só identação hehe
+
+## E se eu precisar retirar este arquivo do stage? quero excluir o arquivo, como faço?
+
+digamos que um colega tenha nos mostrado uma forma mais simples de resolver o problema que biblioteca _lib.js_ resolve. E agora eu tenho preciso excluir este arquivo.
+
+Nós vamos fazer o comando do _git_, [restore](https://git-scm.com/docs/git-restore).
+
+```git
+git restore --staged lib.js
+```
+
+E então excluimos o arquivo com o comando `rm`
+
+```git
+rm lib.js
+git status
+```
+
+![](print/rmLib.jpg)
+
+Antes de fazermos nosso primeiro `push`, nós vamos fazer uma pequena atualização em nossos arquivos...
+![](print/att1.jpg)
+
+No arquivo _index.js_ agora temos uma nova funcao `hello`
+
+```JavaScript
+funcition hello () {
+    console.log('hello');
+}
+```
+
+Enquanto que no arquivo _app.js_ eu adiciono algum conteúdo a varíavel `app`
+
+```JavaScript
+const app = 'blablabla';
+```
+
+Então agora vou _commitar_ as novas alterações, para fazermos então o `push`
+
+```git
+git add -A
+git commit -m "Atualização os arquivos index.js e app.js"
+git status
+```
+
+![](print/commit21.jpg)
+
+Mas antes de fazer o `push`, precavidos, como sempre devemos ser. Fazermos um `diff` para ter certeza que esta tudo bem
+
+```git
+git diff origin/HEAD
+```
+
+![](print/gitDiff.jpg)
+
+Ao analizar com mais carinho este `diff`, percebo que não faz sentido a ultima atualização que fiz no arquivo _app.js_, então eu preciso apagar esta parte, retirar do _commit_ o arquivo _app.js_.
+
+Primeiro nós vamos fazer um `log` e vamos nos achar:
+
+```git
+git log --oneline
+```
+
+![](print/log1.jpg)
+
+Vemos que existem 2 _commits_ e somente no segundo que está o pedaço de código que desejamos retirar. Vamos usar o comando [git reset](https://git-scm.com/docs/git-reset)
+
+```git
+git reset HEAD~1
+```
+
+Ou também podemos usar
+
+```git
+git reset f50f530
+```
+
+###### este número é o rash do commit para qual eu quero voltar
+
+os dois comandos realizam a mesma tarefa.
+![](print/reset1.jpg)
+
+agora o último _commit_ foi desfeito e eu posso subir apenas as alterações que estão em funcionamento. Por isto sempre temos que ser atentos, para não subir para a `branch` principal, onde o resto da equipe ira fazer download da atualização, arquivos com problemas...
+
+então agora vou _commitar_ apenas o arquivo que esta 100%
+
+```git
+git add index.js
+git commit -m "atualização do arquivo index.js"
+git status
+```
+
+![](print/commit22.jpg)
+
+##### todo mundo as vezes escreve uns comandinhos errado 🤪
+
+E agora com os arquivos certos _commitados_, vamos fazer o `push`...
+
+```git
+git push
+```
+
+![](print/push11.jpg)
+
+Com isto agora, todos que acessarem o nosso reposirio, vai ter acesso ao conteúdo do projeto...😬
