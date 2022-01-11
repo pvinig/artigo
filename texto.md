@@ -16,11 +16,11 @@ Vamos ao [GitHub](https://github.com/), logamos e no canto esquerdo terá a opç
 
 ### Selecionando o botão _New_, vamos para a janela de criação de repositórios.
 
-![](print/criando-repo.JPG)
+![](/print/criando-repo.JPG)
 
-Aqui eu criei um repositório [Github-Erros-Comuns](https://github.com/pvinig/Github-Erros-Comuns), adicionei uma descrição um arquivo _README_.
+Aqui eu criei um repositório [Github-Erros-Comuns](https://github.com/pvinig/Github-Erros-Comuns), adicionei uma descrição a um arquivo _README_.
 então eu pego o link para clonar o nosso repositório e vou para o prompt de comando
-onde eu vou mudar a pasta na qual estou navegando para onde deixo meus projetos,
+onde eu vou mudar a pasta na qual estou navegando para onde deixo meus projetos
 com o comando `cd` que significa _change directory_ , traduzindo
 mudar de pasta.
 
@@ -41,7 +41,7 @@ para fazer o download de outros repositórios, é só adicionar o _clone link_ a
 então para fazer a primeira alteração
 eu abro o meu editor de código, no meu caso [Visual Studio Code](https://code.visualstudio.com/) e crio o arquivo _index.js_ e escrevo uma simples linha de código nele.
 
-#### obs: a seta branca indica onde voce pode criar um novo arquivo no _studio code_
+#### obs: a seta branca indica onde voce pode criar um novo arquivo no _Visual Studio Code_
 
 ![](/print/new-arq.JPG)
 
@@ -53,20 +53,20 @@ git status
 
 ![](print/git-status.JPG)
 
-Como podemos observar, o prompt nos responde que existe um _Untracked file_, um arquivo que o git ainda não está no histórico de alterções do git, para adiciona-lo eu farei o comando `add` e pedirei um `status` para o _git_ para assim fazer nosso primeiro commit.
+Como podemos observar, o prompt nos responde que existe um _Untracked file_, um arquivo que para o git ainda não está no histórico de alterções do git, para adiciona-lo eu farei o comando `add` e pedirei um `status` novamente.
 
 ```powerShell
 git add index.js
 git status
 ```
 
-agora vou salvar as alterações no histórico de alterações do _gitHub_ , vou fazer o commit.
+agora vou salvar as alterações no NOSSO histórico de alterações do _git_ , vou fazer o commit.
 
 ```powerShell
 git commit -m "adicionado o arquivi index.js ao repositório no guto"
 ```
 
-É sempre muito importante por menssagens que resumam o que você esta atualizando em cada _commit_ que você faz, assim no caso de algum _bug_ por exemplo. Você pode saber oq cada _commit_ agrega para o projeto como um todo, ficand mais facíl de localizar falhas e também fazer atualizações.
+É sempre muito importante escrever menssagens que resumam o que você esta trazendo de novo em cada _commit_, assim no caso de algum _bug_ por exemplo. Você pode saber oq cada _commit_ agrega para o projeto como um todo, e ficando mais facíl de localizar falhas e também fazer atualizações.
 
 Vejam que cometi alguns erros ao fazer este commit, troquei "arquivo" por "arquiivi" assim como "GitHub" por "guto", para corregir isto, usarei o comando ` --amend` para poder reescrever a mensagem.
 
@@ -96,7 +96,7 @@ git log
 git status
 ```
 
-![](print/log-status-1.jpg)
+![](/print/log-status-1.jpg)
 
 ### O que o _git_ está nos dizendo aqui?
 
@@ -127,7 +127,7 @@ com isto todas as alterações que fizemos até agora estão todas no mesmo comm
 ## Continuando nossa aventura no git senhoras e senhores: [git restore](https://git-scm.com/docs/git-restore)
 
 Contruindo nosso projeto, nos vamos criar o arquivo _lib.js_ que representa uma biblioteca nova ultilizada no projeto.
-![](print/libJs.jpg)
+![](/print/libJs.jpg)
 
 Eu logo já adiciono o novo arquivo la no _git_ e também peço um `status`.
 
@@ -136,7 +136,7 @@ git add lib.js
 git status
 ```
 
-![](print/addLib.jpg)
+![](/print/addLib.jpg)
 
 ##### eu uso _prettier_ no meu VsCode então modificou o arquivo _app.js_ tb mas foi só identação hehe
 
@@ -157,10 +157,10 @@ rm lib.js
 git status
 ```
 
-![](print/rmLib.jpg)
+![](/print/rmLib.jpg)
 
 Antes de fazermos nosso primeiro `push`, nós vamos fazer uma pequena atualização em nossos arquivos...
-![](print/att1.jpg)
+![](/print/att1.jpg)
 
 No arquivo _index.js_ agora temos uma nova funcao `hello`
 
@@ -184,7 +184,7 @@ git commit -m "Atualização os arquivos index.js e app.js"
 git status
 ```
 
-![](print/commit21.jpg)
+![](/print/commit21.jpg)
 
 Mas antes de fazer o `push`, precavidos, como sempre devemos ser. Fazermos um `diff` para ter certeza que esta tudo bem
 
@@ -192,7 +192,7 @@ Mas antes de fazer o `push`, precavidos, como sempre devemos ser. Fazermos um `d
 git diff origin/HEAD
 ```
 
-![](print/gitDiff.jpg)
+![](/print/gitDiff.jpg)
 
 Ao analizar com mais carinho este `diff`, percebo que não faz sentido a ultima atualização que fiz no arquivo _app.js_, então eu preciso apagar esta parte, retirar do _commit_ o arquivo _app.js_.
 
@@ -202,7 +202,7 @@ Primeiro nós vamos fazer um `log` e vamos nos achar:
 git log --oneline
 ```
 
-![](print/log1.jpg)
+![](/print/log1.jpg)
 
 Vemos que existem 2 _commits_ e somente no segundo que está o pedaço de código que desejamos retirar. Vamos usar o comando [git reset](https://git-scm.com/docs/git-reset)
 
@@ -219,7 +219,7 @@ git reset f50f530
 ###### este número é o rash do commit para qual eu quero voltar
 
 os dois comandos realizam a mesma tarefa.
-![](print/reset1.jpg)
+![](/print/reset1.jpg)
 
 agora o último _commit_ foi desfeito e eu posso subir apenas as alterações que estão em funcionamento. Por isto sempre temos que ser atentos, para não subir para a `branch` principal, onde o resto da equipe ira fazer download da atualização, arquivos com problemas...
 
@@ -231,7 +231,7 @@ git commit -m "atualização do arquivo index.js"
 git status
 ```
 
-![](print/commit22.jpg)
+![](/print/commit22.jpg)
 
 ##### todo mundo as vezes escreve uns comandinhos errado 🤪
 
@@ -241,7 +241,7 @@ E agora com os arquivos certos _commitados_, vamos fazer o `push`...
 git push
 ```
 
-![](print/push11.jpg)
+![](/print/push11.jpg)
 
 Com isto agora, todos que acessarem o nosso reposirio, vai ter acesso ao conteúdo do projeto...😬
 
