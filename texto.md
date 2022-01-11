@@ -96,7 +96,7 @@ git log
 git status
 ```
 
-![](/print/log-status-1.jpg)
+![](/print/log-status-1.JPG)
 
 ### O que o _git_ está nos dizendo aqui?
 
